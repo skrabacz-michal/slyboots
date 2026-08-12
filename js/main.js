@@ -1,72 +1,31 @@
-// The Church of Slyboots. The scripts are few; the god prefers it that way.
+// Menu toggle + video autoplay forcing. The only logic on the page (ds/README.md).
 
-// Paste your Web3Forms access key here (free at https://web3forms.com, arrives by email).
-const ACCESS_KEY = 'YOUR_ACCESS_KEY';
+const stage = document.getElementById('stage');
+const burger = document.getElementById('burger');
+const menu = document.getElementById('menu');
 
-document.documentElement.classList.add('js');
-
-// scroll reveals
-const io = new IntersectionObserver((entries) => {
-  for (const e of entries) {
-    if (e.isIntersecting) {
-      e.target.classList.add('lit');
-      io.unobserve(e.target);
-    }
-  }
-}, { threshold: 0.2 });
-document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-
-// the vow
-const form = document.getElementById('vow-form');
-const ordination = document.getElementById('ordination');
-const formError = form.querySelector('.form-error');
-const button = form.querySelector('.btn-vow');
-
-function validate() {
-  let ok = true;
-  for (const field of form.querySelectorAll('.field')) {
-    const input = field.querySelector('input');
-    const error = field.querySelector('.field-error');
-    const bad = input.type === 'checkbox' ? !input.checked : !input.checkValidity();
-    error.hidden = !bad;
-    if (bad) ok = false;
-  }
-  return ok;
+// autoplay gotcha: force the properties imperatively (spec)
+const v = document.querySelector('.plate-video');
+if (v) {
+  v.muted = true;
+  v.defaultMuted = true;
+  v.loop = true;
+  v.playsInline = true;
+  v.autoplay = true;
+  const p = v.play();
+  if (p && p.catch) p.catch(() => {});
 }
 
-form.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  formError.hidden = true;
-  if (!validate()) return;
+function set(open) {
+  stage.classList.toggle('is-open', open);
+  burger.setAttribute('aria-expanded', String(open));
+  burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  menu.setAttribute('aria-hidden', String(!open));
+}
 
-  button.disabled = true;
-  button.textContent = 'The Ledger opens…';
-
-  try {
-    if (ACCESS_KEY === 'YOUR_ACCESS_KEY') {
-      // ponytail: no key configured yet; demo the ordination locally instead of failing
-      console.warn('Web3Forms key not set. The vow was not sent anywhere.');
-      await new Promise((r) => setTimeout(r, 900));
-    } else {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: ACCESS_KEY,
-          subject: 'A new apostle has taken the vow',
-          from_name: 'The Church of Slyboots',
-          name: form.name.value,
-          email: form.email.value,
-        }),
-      });
-      if (!res.ok) throw new Error('ledger closed');
-    }
-    form.hidden = true;
-    ordination.hidden = false;
-    ordination.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  } catch {
-    formError.hidden = false;
-    button.disabled = false;
-    button.textContent = 'Take the Vow';
-  }
+burger.addEventListener('click', () => set(!stage.classList.contains('is-open')));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => set(false)));
+window.addEventListener('resize', () => {
+  if (window.innerWidth / window.innerHeight > 1.1) set(false);
 });

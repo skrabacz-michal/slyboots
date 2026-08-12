@@ -3,208 +3,110 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>The Church of Slyboots</title>
-  <meta name="description" content="An old god is accepting apostles. The Church of Slyboots keeps the rites of Weles, lord of cattle, coin, magic, and everything beneath the roots.">
-  <meta property="og:title" content="The Church of Slyboots">
-  <meta property="og:description" content="An old god is accepting apostles.">
+  <title>The Next Layer of Intelligence</title>
+  <meta name="description" content="A unified infrastructure platform to help teams build, ship, and scale AI systems with confidence.">
+  <meta property="og:title" content="The Next Layer of Intelligence">
+  <meta property="og:description" content="A unified infrastructure platform to help teams build, ship, and scale AI systems with confidence.">
   <meta property="og:url" content="https://slyboots.church/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://slyboots.church/assets/veles.webp">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/fonts/cormorant-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-var-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="grain" aria-hidden="true"></div>
-
-<!-- ═══════════════ HERO ═══════════════ -->
-<header class="hero">
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <p class="eyebrow">Kościół Welesa</p>
-      <h1>An old god is accepting apostles.</h1>
-      <p class="hero-sub">The Church of Slyboots keeps the rites of Weles, lord of cattle, coin, magic, and everything beneath the roots.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary" href="#rite">Take the Vow</a>
-        <a class="btn btn-ghost" href="#tenets">Read the Tenets</a>
-      </div>
-    </div>
-
-    <figure class="icon-panel reveal">
-      <div class="icon-frame">
-        <img src="assets/veles.webp" alt="Weles, the horned lord of the low places, in bear fur and ember light." width="768" height="512" fetchpriority="high">
-      </div>
-      <figcaption>Weles, Lord of the Low Places. Icon of the Church.</figcaption>
-    </figure>
-  </div>
-</header>
-
-<main>
-
-<!-- ═══════════════ THE GOD ═══════════════ -->
-<section class="god" id="god">
-  <div class="prose reveal">
-    <h2>The Lord of the Low Places</h2>
-    <p>Weles keeps the underworld the way a good farmer keeps a barn: warm, orderly, and full of things that belong to him. He is the god of cattle and of wealth, of oaths and of magic, of poets and of other professional liars.</p>
-    <p>He does not ask for war. He does not ask for weather. He asks that accounts be kept, that words be kept, and that the thunder be politely ignored.</p>
-    <p>The Church of Slyboots is his ledger on earth. It is a small operation. He prefers it that way.</p>
+<div class="stage" id="stage">
+  <div class="plate">
+    <video class="plate-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260808_112712_da9d53df-6d27-4b12-bdf6-aa9dc2622bdf.mp4" type="video/mp4">
+    </video>
   </div>
 
-  <ul class="attributes reveal" aria-label="The four attributes of Weles">
-    <li>
-      <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M22 50 C 12 38, 12 20, 26 10 C 18 26, 22 40, 30 48"/><path d="M42 50 C 52 38, 52 20, 38 10 C 46 26, 42 40, 34 48"/></g></svg>
-      <span>The Horns</span>
-    </li>
-    <li>
-      <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M8 36 C 16 26, 24 46, 32 36 C 40 26, 48 46, 56 36"/><circle cx="56" cy="35" r="1.8" fill="currentColor" stroke="none"/></g></svg>
-      <span>The Serpent</span>
-    </li>
-    <li>
-      <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M14 46 C 10 30, 20 16, 32 16 C 44 16, 54 30, 50 46"/><path d="M20 22 C 18 16, 22 12, 26 14 M44 22 C 46 16, 42 12, 38 14"/><path d="M14 46 L50 46"/></g></svg>
-      <span>The Bear</span>
-    </li>
-    <li>
-      <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M32 12 L32 34 M32 22 L18 38 M32 22 L46 38 M18 38 L12 50 M46 38 L52 50 M32 34 L32 52"/></g></svg>
-      <span>The Roots</span>
-    </li>
-  </ul>
-</section>
-
-<!-- ═══════════════ THE ETERNAL FEUD ═══════════════ -->
-<section class="feud" id="feud" aria-label="The eternal feud of Perun and Weles">
-  <div class="feud-stage">
-    <div class="feud-sky" aria-hidden="true"></div>
-    <div class="feud-ground" aria-hidden="true"></div>
-
-    <svg class="feud-scene" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <!-- Perun's bolt, descending -->
-      <path class="bolt" d="M600 -20 L570 180 L620 200 L560 400 L610 420 L575 560"
-            fill="none" stroke="var(--lightning)" stroke-width="3" stroke-linejoin="bevel"/>
-      <!-- the waterline -->
-      <line x1="0" y1="560" x2="1200" y2="560" stroke="var(--gold-line)" stroke-width="1" opacity="0.5"/>
-      <!-- the serpent, slipping away below -->
-      <path class="serpent" d="M1240 660 C 1150 610, 1050 710, 950 660 C 850 610, 750 710, 650 660 C 550 610, 450 710, 350 660 C 290 630, 230 640, 190 660"
-            fill="none" stroke="var(--ember)" stroke-width="4"/>
-      <circle class="serpent-eye" cx="186" cy="658" r="5" fill="var(--ember)"/>
-    </svg>
-
-    <div class="feud-lines">
-      <p class="feud-line" data-beat="1">Each spring, Perun strikes the oak.</p>
-      <p class="feud-line" data-beat="2">Each spring, Weles is already elsewhere.</p>
-      <p class="feud-line" data-beat="3">The rain falls. The cattle drink. Everyone profits.</p>
-    </div>
-    <p class="feud-coda">The feud is ancient, amicable, and extremely productive.</p>
-  </div>
-</section>
-
-<!-- ═══════════════ THE TENETS ═══════════════ -->
-<section class="tenets" id="tenets">
-  <header class="tenets-head reveal">
-    <p class="eyebrow">Pięć Praw</p>
-    <h2>The Tenets</h2>
-  </header>
-  <ol class="tenet-grid">
-    <li class="reveal"><span class="numeral">I</span><p>Keep your word. Keep a spare.</p></li>
-    <li class="reveal"><span class="numeral">II</span><p>Wealth is wisdom that can be counted.</p></li>
-    <li class="reveal"><span class="numeral">III</span><p>Honor the serpent at the roots. The branches were never yours.</p></li>
-    <li class="reveal"><span class="numeral">IV</span><p>What the storm takes, the river returns. Wait by the river.</p></li>
-    <li class="reveal"><span class="numeral">V</span><p>When the thunder asks where you are, be water.</p></li>
-  </ol>
-</section>
-
-<!-- ═══════════════ THE RITE OF JOINING ═══════════════ -->
-<section class="rite" id="rite">
-  <div class="rite-inner">
-    <div class="rite-liturgy reveal">
-      <h2>The Rite of Joining</h2>
-      <p>Apostleship is open to the cunning, the patient, and the recently struck by lightning. There are no dues. There are no meetings. There is a Ledger, and your name goes in it.</p>
-      <p class="liturgy-line" lang="pl">Witaj w niskich miejscach.</p>
-    </div>
-
-    <form class="rite-form reveal" id="vow-form" novalidate>
-      <div class="field">
-        <label for="vow-name">Your name</label>
-        <input type="text" id="vow-name" name="name" required autocomplete="name">
-        <p class="helper">As it will appear in the Ledger.</p>
-        <p class="field-error" role="alert" hidden>The Ledger requires a name.</p>
-      </div>
-      <div class="field">
-        <label for="vow-email">Your email</label>
-        <input type="email" id="vow-email" name="email" required autocomplete="email">
-        <p class="helper">Where the epistles will find you.</p>
-        <p class="field-error" role="alert" hidden>The epistles need a working address.</p>
-      </div>
-      <div class="field field-vow">
-        <label class="vow-check">
-          <input type="checkbox" id="vow-oath" name="vow" required>
-          <span>I renounce the thunder and its committees.</span>
-        </label>
-        <p class="field-error" role="alert" hidden>The vow is not optional. That is what makes it a vow.</p>
-      </div>
-      <button type="submit" class="btn btn-primary btn-vow">Take the Vow</button>
-      <p class="form-error" role="alert" hidden>The Ledger did not open. Try again, or try a smaller storm.</p>
-    </form>
-
-    <div class="ordination" id="ordination" hidden>
-      <svg class="rosette" viewBox="0 0 100 100" aria-hidden="true">
-        <g fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="50" cy="50" r="46"/>
-          <ellipse cx="50" cy="50" rx="42" ry="13"/>
-          <ellipse cx="50" cy="50" rx="42" ry="13" transform="rotate(60 50 50)"/>
-          <ellipse cx="50" cy="50" rx="42" ry="13" transform="rotate(120 50 50)"/>
-        </g>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Home">
+      <svg viewBox="0 0 31.5 48.5" aria-hidden="true">
+        <defs>
+          <linearGradient id="brand-g" gradientUnits="userSpaceOnUse" x1="8" y1="0" x2="34.1" y2="28.9">
+            <stop offset="0" stop-color="#9e9e9e"/>
+            <stop offset=".28" stop-color="#a6a6a6"/>
+            <stop offset=".34" stop-color="#a3a3a3"/>
+            <stop offset=".40" stop-color="#3a3a3a"/>
+            <stop offset=".55" stop-color="#414141"/>
+            <stop offset=".60" stop-color="#7a7a7a"/>
+            <stop offset=".68" stop-color="#8e8e8e"/>
+            <stop offset=".80" stop-color="#a9a9a9"/>
+            <stop offset=".95" stop-color="#c4c4c4"/>
+            <stop offset="1" stop-color="#cccccc"/>
+          </linearGradient>
+        </defs>
+        <path d="M21.5 0 L21.5 19.5 L31.5 19.5 L31.5 29 L10 48.5 L10 28.5 L0.5 28.5 L0.5 18.5 Z" fill="url(#brand-g)"/>
+        <rect x="0.5" y="18.5" width="9" height="10" fill="#fdfdfd"/>
+        <rect x="22" y="19.5" width="9.5" height="9.5" fill="#fdfdfd"/>
       </svg>
-      <h3>It is done.</h3>
-      <p><span lang="pl">Witaj, Apostole.</span> Your name is entered in the Ledger of the Low Places. The Church will write when there is something worth writing.</p>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#about">About</a><a href="#features">Features</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="pill pill-nav" href="#get-started"><span>Get Started</span></a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+      <i></i><i></i>
+    </button>
+  </header>
+
+  <div class="hero">
+    <h1 class="headline"><span>The Next Layer</span> <span>of Intelligence</span></h1>
+    <p class="sub"><span>A unified infrastructure platform to help teams build,</span> <span>ship, and scale AI systems with confidence.</span></p>
+    <div class="actions">
+      <a class="pill pill-cta" href="#get-started"><span>Get Started</span></a>
+      <a class="ghost" href="#architecture">View Architecture</a>
     </div>
   </div>
-</section>
 
-<!-- ═══════════════ QUESTIONS PUT TO THE CHURCH ═══════════════ -->
-<section class="faq" id="faq">
-  <h2 class="reveal">Questions Put to the Church</h2>
-  <div class="faq-list reveal">
-    <details>
-      <summary>Is this a real church?</summary>
-      <p>The domain is real. The Ledger is real. The rest is between you and Weles.</p>
-    </details>
-    <details>
-      <summary>What is required of an apostle?</summary>
-      <p>Very little. Weles favors the economical. An epistle will arrive when there is need. There are no meetings.</p>
-    </details>
-    <details>
-      <summary lang="pl">Czy muszę mówić po polsku?</summary>
-      <p>No. The liturgy is Polish because the liturgy is old. The Church is patient with newcomers.</p>
-    </details>
-    <details>
-      <summary>Why is it called Slyboots?</summary>
-      <p>An old English word for a quiet schemer. The god reviewed the translation and found it fair.</p>
-    </details>
-    <details>
-      <summary>Can I leave?</summary>
-      <p>Yes. Write to the Church and your page is torn from the Ledger. The serpent does not chase.</p>
-    </details>
+  <nav class="menu" id="menu" aria-hidden="true">
+    <div class="menu-inner">
+      <p class="menu-eyebrow">Menu</p>
+      <ul class="menu-list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="menu-foot">
+        <a class="pill" href="#get-started"><span>Get Started</span></a>
+        <a class="ghost" href="#architecture">View Architecture</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- partner icons are silhouette approximations per ds/README.md; swap for source SVGs when available -->
+  <div class="logos" aria-hidden="true">
+    <div class="lg lg1">
+      <svg viewBox="0 0 30.5 31" fill="currentColor" aria-hidden="true">
+        <path d="M15.25 0 C23.7 0 30.5 6.9 30.5 15.5 C30.5 24.1 23.7 31 15.25 31 C6.8 31 0 24.1 0 15.5 C0 6.9 6.8 0 15.25 0 Z M15.25 5.5 C9.8 5.5 5.4 9.98 5.4 15.5 C5.4 21.02 9.8 25.5 15.25 25.5 C20.7 25.5 25.1 21.02 25.1 15.5 C25.1 9.98 20.7 5.5 15.25 5.5 Z M15.25 9.5 A6 6 0 1 1 15.25 21.5 A6 6 0 1 1 15.25 9.5 Z"/>
+      </svg>
+      <span class="w">logoipsum</span>
+    </div>
+    <div class="lg lg2">
+      <svg viewBox="0 0 24.5 30" fill="currentColor" aria-hidden="true">
+        <path d="M12.25 0 C19 6.2 24.5 12.4 24.5 18.6 C24.5 24.9 19 30 12.25 30 C5.5 30 0 24.9 0 18.6 C0 12.4 5.5 6.2 12.25 0 Z"/>
+      </svg>
+      <span class="w">logoipsum<span class="dot"></span></span>
+    </div>
+    <div class="lg lg3">
+      <svg viewBox="0 0 28.5 28" fill="currentColor" aria-hidden="true">
+        <path d="M0 0 H12.5 V12.5 H0 Z M16 0 H28.5 V12.5 H16 Z M0 15.5 H12.5 V28 H0 Z M16 15.5 H28.5 V28 H16 Z"/>
+      </svg>
+      <span class="w">logoipsum</span>
+    </div>
+    <div class="lg lg4">
+      <svg viewBox="0 0 28.5 25.5" fill="currentColor" aria-hidden="true">
+        <path d="M14.25 0 L28.5 25.5 H19.4 L14.25 15.6 L9.1 25.5 H0 Z"/>
+      </svg>
+      <span class="w">logoipsum</span>
+    </div>
   </div>
-</section>
-
-</main>
-
-<!-- ═══════════════ FOOTER ═══════════════ -->
-<footer class="footer">
-  <svg class="rosette" viewBox="0 0 100 100" aria-hidden="true">
-    <g fill="none" stroke="currentColor" stroke-width="1.5">
-      <circle cx="50" cy="50" r="46"/>
-      <ellipse cx="50" cy="50" rx="42" ry="13"/>
-      <ellipse cx="50" cy="50" rx="42" ry="13" transform="rotate(60 50 50)"/>
-      <ellipse cx="50" cy="50" rx="42" ry="13" transform="rotate(120 50 50)"/>
-    </g>
-  </svg>
-  <p class="footer-name">The Church of Slyboots</p>
-  <p class="footer-glory" lang="pl">Chwała Welesowi.</p>
-  <p class="footer-small">No thunder was consulted in the making of this site.</p>
-</footer>
+</div>
 
 <script src="js/main.js" defer></script>
 </body>

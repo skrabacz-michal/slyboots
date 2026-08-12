@@ -1,11 +1,12 @@
 # slyboots.church
 
-The Church of Slyboots. A one-page shrine to Weles, Lord of the Low Places.
-Static HTML/CSS/JS, no build step. Deployed via GitHub Pages.
+"The Next Layer of Intelligence" — a single-viewport, full-bleed video hero,
+recreated from the design handoff in `ds/` (see `ds/README.md` for the full
+spec; layout is measured against a 1487x1058 reference canvas with a
+height-locked unit system). Static HTML/CSS/JS, no build step, deployed via
+GitHub Pages.
 
-## Two things only you can do
-
-### 1. Point the domain (GoDaddy → GitHub Pages)
+## DNS (GoDaddy → GitHub Pages), still pending
 
 In GoDaddy DNS for `slyboots.church`, replace the parking records with:
 
@@ -17,21 +18,14 @@ In GoDaddy DNS for `slyboots.church`, replace the parking records with:
 | A     | @    | 185.199.111.153   |
 | CNAME | www  | skrabacz-michal.github.io |
 
-Then in the repo: Settings → Pages → check that custom domain shows
-`slyboots.church`, and once DNS propagates (minutes to a few hours),
-tick **Enforce HTTPS**.
+Then in repo Settings → Pages, once DNS propagates, tick **Enforce HTTPS**.
 
-### 2. Wire the vow form (Web3Forms)
+## Notes
 
-1. Go to <https://web3forms.com>, enter the inbox that should receive new
-   apostles, and copy the access key it emails you.
-2. In `js/main.js`, replace `YOUR_ACCESS_KEY` with that key.
-
-Until then the form runs in demo mode: the ordination shows, but nothing
-is sent (a console warning says so).
-
-## Swapping the Veles artwork
-
-The hero icon is `assets/veles.webp`, center-cropped to 3:4 by the CSS
-(`.icon-frame img`). To change it, replace that file; any orientation works,
-portrait crops best.
+- The background video streams from the CloudFront URL specified in the
+  handoff (mandatory asset, do not substitute).
+- Partner logo icons are silhouette approximations, as flagged in the
+  handoff; swap in the source SVGs if they become available.
+- The `logoipsum` wordmarks render in heavy Manrope via the `IpsumMark`
+  fallback `@font-face`; drop in the real font binary if it exists.
+- The previous site (The Church of Slyboots) lives in git history.
