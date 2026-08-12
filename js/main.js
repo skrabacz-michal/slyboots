@@ -51,7 +51,10 @@ function enterDoor() {
 enter.addEventListener('click', enterDoor);
 doorHit.addEventListener('click', enterDoor); // the door itself opens
 
+let returnTimer = null;
+
 function leave() {
+  clearTimeout(returnTimer); // manual exit cancels the auto-return
   document.body.classList.remove('inside', 'entering'); // zoom back out
   join.setAttribute('aria-hidden', 'true');
   stage.inert = false;
@@ -113,6 +116,7 @@ form.addEventListener('submit', async (e) => {
       form.hidden = true;
       done.hidden = false;
       document.body.classList.add('ordained'); // the veil passes, the sentence lands
+      returnTimer = setTimeout(leave, 5000); // the door returns you to the night
     }, reduced ? 0 : 250);
   } catch {
     formError.hidden = false;
