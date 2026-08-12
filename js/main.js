@@ -1,45 +1,28 @@
-// Seamless-ish loop: the clip's last frame does not match its first, so a
-// native loop restart shows as a hard cut. Instead, two copies of the video
-// crossfade: the standby starts from 0 and dissolves in over the last
-// ~1.1s of the active copy. The portal (the big static bright element)
-// stays lit through the dissolve, so the cut disappears.
+// The clip does not loop seamlessly, so instead of a hard cut the video
+// dips to the page's black over its last ~0.6s, restarts from zero while
+// dark, and fades back up. The loop point reads as a breath, not a jump.
 
-const FADE_TRIGGER = 1.25; // s before the end; CSS transition is 1.1s
+const DIP_TRIGGER = 0.85; // s before the end; CSS fade is 0.6s
 
-const [a, b] = document.querySelectorAll('.plate-video');
-
-for (const v of [a, b]) {
-  v.muted = true;
-  v.defaultMuted = true;
-  v.playsInline = true;
-}
-a.autoplay = true;
-const p = a.play();
+const v = document.querySelector('.plate-video');
+v.muted = true;
+v.defaultMuted = true;
+v.playsInline = true;
+v.autoplay = true;
+const p = v.play();
 if (p && p.catch) p.catch(() => {});
 
-let active = a;
-let standby = b;
-let fading = false;
+let dipping = false;
 
-standby.style.zIndex = '1'; // incoming copy dissolves in on top
-
-function onTime() {
-  if (fading || this !== active || !this.duration) return;
-  if (this.currentTime < this.duration - FADE_TRIGGER) return;
-  fading = true;
-  standby.currentTime = 0;
-  const pp = standby.play();
-  if (pp && pp.catch) pp.catch(() => {});
-  standby.classList.remove('v-hidden');
+v.addEventListener('timeupdate', () => {
+  if (dipping || !v.duration || v.currentTime < v.duration - DIP_TRIGGER) return;
+  dipping = true;
+  v.classList.add('v-dark');
   setTimeout(() => {
-    active.pause();
-    active.classList.add('v-hidden');
-    active.style.zIndex = '1';
-    standby.style.zIndex = '0';
-    [active, standby] = [standby, active];
-    fading = false;
-  }, 1200);
-}
-
-a.addEventListener('timeupdate', onTime);
-b.addEventListener('timeupdate', onTime);
+    v.currentTime = 0;
+    const pp = v.play(); // 'ended' pauses it if the fade outlasted the clip
+    if (pp && pp.catch) pp.catch(() => {});
+    v.classList.remove('v-dark');
+    setTimeout(() => { dipping = false; }, 700);
+  }, 650);
+});

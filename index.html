@@ -15,12 +15,9 @@
 
 <div class="stage">
   <div class="plate">
-    <!-- two copies of the same source; js/main.js crossfades them at the loop
-         point because the clip itself does not loop seamlessly -->
+    <!-- the clip does not loop seamlessly; js/main.js dips it to black at the
+         loop point and restarts from zero while dark -->
     <video class="plate-video" autoplay muted playsinline preload="auto" aria-hidden="true">
-      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260808_112712_da9d53df-6d27-4b12-bdf6-aa9dc2622bdf.mp4" type="video/mp4">
-    </video>
-    <video class="plate-video v-hidden" muted playsinline preload="auto" aria-hidden="true">
       <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260808_112712_da9d53df-6d27-4b12-bdf6-aa9dc2622bdf.mp4" type="video/mp4">
     </video>
   </div>
