@@ -7,9 +7,10 @@ deployed via GitHub Pages.
 Earlier versions (The Church of Slyboots, the full "Next Layer of
 Intelligence" hero with text and nav) live in git history.
 
-## DNS (GoDaddy → GitHub Pages), still pending
+## DNS (Spaceship → GitHub Pages), still pending
 
-In GoDaddy DNS for `slyboots.church`, replace the parking records with:
+In Spaceship's DNS settings for `slyboots.church` (Domain → DNS records,
+using Spaceship's nameservers), remove the parking records and add:
 
 | Type  | Name | Value             |
 |-------|------|-------------------|
