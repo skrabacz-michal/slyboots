@@ -1,0 +1,485 @@
+/* ═══ The Church of Slyboots · Ember & Void ═══ */
+
+:root {
+  --void: #0d0a08;
+  --void-2: #16110d;
+  --void-3: #1e1712;
+  --bone: #e9e0d2;
+  --ash: #9c9080;
+  --ember: #d1793a;
+  --ember-deep: #8a4a1e;
+  --gold-line: #6f6148;
+  --lightning: #dce8f2;
+  --serif-display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+  --serif-body: 'Iowan Old Style', 'Palatino', Georgia, serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background: var(--void);
+  color: var(--bone);
+  font-family: var(--serif-body);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* grain: fixed, non-scrolling, cheap */
+.grain {
+  position: fixed; inset: 0; z-index: 60; pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3 {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: 0.005em;
+}
+
+::selection { background: var(--ember-deep); color: var(--bone); }
+
+.eyebrow {
+  font-family: var(--serif-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--ember);
+}
+
+/* ═══ Buttons ═══ */
+.btn {
+  display: inline-block;
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85rem 2rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary {
+  background: var(--ember);
+  color: #140b05;
+}
+.btn-primary:hover { background: #e08a48; }
+.btn-ghost {
+  color: var(--bone);
+  border-color: var(--gold-line);
+}
+.btn-ghost:hover { border-color: var(--ember); color: var(--ember); }
+.btn:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 3px;
+}
+
+/* ═══ Scroll reveal (JS adds .lit; static without JS) ═══ */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .js .reveal.lit { opacity: 1; transform: none; }
+}
+
+/* ═══ Hero ═══ */
+.hero {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 90% 60% at 70% 100%, #241409 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 0%, #12100e 0%, transparent 70%),
+    var(--void);
+}
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 5rem;
+  align-items: center;
+}
+.hero-copy h1 {
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  margin: 1.2rem 0 1.6rem;
+  text-wrap: balance;
+}
+.hero-sub {
+  color: var(--ash);
+  max-width: 42ch;
+  margin-bottom: 2.4rem;
+}
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* icon panel: framed like an Orthodox icon */
+.icon-panel { justify-self: end; }
+.icon-frame {
+  width: fit-content;
+  margin: 0 auto;
+  border: 1px solid var(--gold-line);
+  outline: 1px solid var(--gold-line);
+  outline-offset: 6px;
+  padding: 10px;
+  background: var(--void-2);
+  border-radius: 130px 130px 4px 4px;
+  overflow: hidden;
+}
+.icon-frame svg, .icon-frame img {
+  display: block;
+  width: min(300px, 76vw);
+  height: auto;
+  border-radius: 120px 120px 2px 2px;
+}
+.icon-frame img {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  filter: saturate(0.85) sepia(0.18);
+}
+.icon-panel figcaption {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--ash);
+  font-style: italic;
+  text-align: center;
+}
+
+/* ═══ The God ═══ */
+.god {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 9rem 2rem;
+}
+.prose { max-width: 62ch; margin: 0 auto; }
+.prose h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 2rem; }
+.prose p + p { margin-top: 1.4rem; }
+.prose p:last-child { color: var(--ash); }
+
+.attributes {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 900px;
+  margin: 6rem auto 0;
+  border-top: 1px solid var(--void-3);
+  padding-top: 3rem;
+  text-align: center;
+  color: var(--gold-line);
+}
+.attributes svg { width: 52px; height: 52px; margin-bottom: 0.8rem; }
+.attributes span {
+  display: block;
+  font-family: var(--serif-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+
+/* ═══ The Eternal Feud ═══ */
+.feud {
+  height: 280vh;
+  view-timeline-name: --feud;
+}
+.feud-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feud-sky {
+  position: absolute; inset: 0 0 30% 0;
+  background: linear-gradient(to bottom, #10141a 0%, #131316 70%, transparent 100%);
+}
+.feud-ground {
+  position: absolute; inset: 70% 0 0 0;
+  background: linear-gradient(to top, #21130a 0%, #170f09 70%, transparent 100%);
+}
+.feud-scene {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+}
+.feud-lines {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 2.2rem;
+  text-align: center;
+  padding: 0 2rem;
+}
+.feud-line {
+  font-family: var(--serif-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+}
+.feud-line[data-beat="2"] { color: var(--ember); }
+.feud-coda {
+  position: absolute;
+  bottom: 3rem;
+  left: 0; right: 0;
+  text-align: center;
+  z-index: 2;
+  color: var(--ash);
+  font-style: italic;
+  font-size: 1rem;
+  padding: 0 2rem;
+}
+
+/* scroll-driven scrub where supported; composed static scene elsewhere */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .bolt {
+      stroke-dasharray: 900;
+      animation: draw-down linear both;
+      animation-timeline: --feud;
+      animation-range: cover 5% cover 45%;
+    }
+    .serpent {
+      stroke-dasharray: 1400;
+      animation: draw-serpent linear both;
+      animation-timeline: --feud;
+      animation-range: cover 25% cover 70%;
+    }
+    .serpent-eye {
+      animation: appear linear both;
+      animation-timeline: --feud;
+      animation-range: cover 65% cover 72%;
+    }
+    .feud-line[data-beat="1"] {
+      animation: rise linear both;
+      animation-timeline: --feud;
+      animation-range: cover 15% cover 30%;
+    }
+    .feud-line[data-beat="2"] {
+      animation: rise linear both;
+      animation-timeline: --feud;
+      animation-range: cover 35% cover 50%;
+    }
+    .feud-line[data-beat="3"] {
+      animation: rise linear both;
+      animation-timeline: --feud;
+      animation-range: cover 55% cover 70%;
+    }
+    .feud-coda {
+      animation: appear linear both;
+      animation-timeline: --feud;
+      animation-range: cover 75% cover 88%;
+    }
+  }
+}
+@keyframes draw-down { from { stroke-dashoffset: 900; } to { stroke-dashoffset: 0; } }
+@keyframes draw-serpent { from { stroke-dashoffset: 1400; } to { stroke-dashoffset: 0; } }
+@keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rise { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+
+/* ═══ The Tenets ═══ */
+.tenets {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 9rem 2rem;
+}
+.tenets-head { text-align: center; margin-bottom: 5rem; }
+.tenets-head h2 { font-size: clamp(2rem, 4vw, 3rem); margin-top: 1rem; }
+.tenet-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem 5rem;
+}
+.tenet-grid li {
+  display: flex;
+  gap: 1.6rem;
+  align-items: baseline;
+}
+.tenet-grid li:nth-child(even) { margin-top: 2.5rem; }
+.tenet-grid li:last-child { grid-column: 1 / -1; max-width: 34rem; justify-self: center; }
+.numeral {
+  font-family: var(--serif-display);
+  font-weight: 500;
+  font-size: 3.2rem;
+  line-height: 1;
+  color: var(--ember);
+  min-width: 2ch;
+  text-align: right;
+}
+.tenet-grid p {
+  font-family: var(--serif-display);
+  font-weight: 500;
+  font-size: 1.45rem;
+  line-height: 1.35;
+}
+
+/* ═══ The Rite ═══ */
+.rite {
+  background: var(--void-2);
+  border-top: 1px solid var(--void-3);
+  border-bottom: 1px solid var(--void-3);
+}
+.rite-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.rite-liturgy h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.6rem; }
+.rite-liturgy p { color: var(--ash); max-width: 46ch; }
+.liturgy-line {
+  margin-top: 2rem;
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--bone) !important;
+}
+
+.rite-form .field { margin-bottom: 1.8rem; display: grid; gap: 0.5rem; }
+.rite-form label {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+}
+.rite-form input[type="text"],
+.rite-form input[type="email"] {
+  background: var(--void);
+  border: 1px solid var(--gold-line);
+  color: var(--bone);
+  font-family: var(--serif-body);
+  font-size: 1.05rem;
+  padding: 0.8rem 1rem;
+  width: 100%;
+}
+.rite-form input:focus { border-color: var(--ember); }
+.helper { font-size: 0.85rem; color: var(--ash); }
+.field-error, .form-error { font-size: 0.9rem; color: #e08a6a; }
+.vow-check {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+  font-family: var(--serif-body) !important;
+  font-weight: 400 !important;
+  font-size: 1rem !important;
+  color: var(--bone);
+  cursor: pointer;
+}
+.vow-check input { accent-color: var(--ember); transform: translateY(2px); }
+.btn-vow { width: 100%; margin-top: 0.5rem; }
+.btn-vow[disabled] { opacity: 0.7; cursor: wait; }
+
+.ordination {
+  grid-column: 2;
+  text-align: center;
+  padding: 3rem 2rem;
+  border: 1px solid var(--gold-line);
+}
+.ordination .rosette { width: 64px; height: 64px; color: var(--ember); margin-bottom: 1.5rem; }
+.ordination h3 { font-size: 2rem; margin-bottom: 1rem; }
+.ordination p { color: var(--ash); max-width: 40ch; margin: 0 auto; }
+.ordination [lang="pl"] { color: var(--bone); font-style: italic; }
+
+/* ═══ FAQ ═══ */
+.faq {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 9rem 2rem;
+}
+.faq h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.faq details {
+  border-bottom: 1px solid var(--void-3);
+  padding: 1.4rem 0;
+}
+.faq details:first-child { border-top: 1px solid var(--void-3); }
+.faq summary {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+";
+  font-family: var(--serif-display);
+  font-size: 1.6rem;
+  color: var(--ember);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p {
+  padding-top: 1rem;
+  color: var(--ash);
+  max-width: 58ch;
+}
+
+/* ═══ Footer ═══ */
+.footer {
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  border-top: 1px solid var(--void-3);
+}
+.footer .rosette { width: 44px; height: 44px; color: var(--gold-line); margin-bottom: 1.6rem; }
+.footer-name {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+}
+.footer-glory {
+  font-family: var(--serif-display);
+  font-style: italic;
+  color: var(--ember);
+  margin-top: 0.4rem;
+}
+.footer-small {
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
+  color: var(--ash);
+}
+
+/* ═══ Mobile ═══ */
+@media (max-width: 767px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    padding: 5rem 1.25rem 4rem;
+  }
+  .icon-panel { justify-self: center; }
+  .god, .tenets, .faq { padding: 5rem 1.25rem; }
+  .attributes { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 1rem; }
+  .tenet-grid { grid-template-columns: 1fr; gap: 2.8rem; }
+  .tenet-grid li:nth-child(even) { margin-top: 0; }
+  .rite-inner { grid-template-columns: 1fr; gap: 3.5rem; padding: 5rem 1.25rem; }
+  .ordination { grid-column: 1; }
+  .feud { height: 240vh; }
+}
