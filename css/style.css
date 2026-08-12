@@ -55,7 +55,7 @@ body.inside .join{visibility:visible;opacity:1;}
 .join-submit:active{transform:translateY(1px);}
 .join-submit[disabled]{opacity:.6;cursor:wait;}
 .join-submit:focus-visible,.join-back:focus-visible{outline:2px solid #0b0b0b;outline-offset:3px;}
-.join-back{position:absolute;left:max(22px,env(safe-area-inset-left));top:max(22px,env(safe-area-inset-top));width:44px;height:44px;border-radius:999px;border:1px solid #d6d6d6;background:transparent;color:#0b0b0b;font-size:20px;cursor:pointer;transition:border-color .3s;}
+.join-back{position:absolute;left:max(22px,env(safe-area-inset-left));top:max(22px,env(safe-area-inset-top));width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;line-height:1;border-radius:999px;border:1px solid #d6d6d6;background:transparent;color:#0b0b0b;font-size:20px;cursor:pointer;transition:border-color .3s;}
 .join-back:hover{border-color:#0b0b0b;}
 .join-done h1{margin-bottom:10px;}
 
