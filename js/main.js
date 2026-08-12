@@ -108,8 +108,12 @@ form.addEventListener('submit', async (e) => {
       });
       if (!res.ok) throw new Error('ledger closed');
     }
-    form.hidden = true;
-    done.hidden = false;
+    form.classList.add('form-fade'); // the form dissolves first
+    setTimeout(() => {
+      form.hidden = true;
+      done.hidden = false;
+      document.body.classList.add('ordained'); // the veil passes, the sentence lands
+    }, reduced ? 0 : 250);
   } catch {
     formError.hidden = false;
     submit.disabled = false;
