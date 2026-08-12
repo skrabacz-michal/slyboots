@@ -1,0 +1,7 @@
+# Design/strategy context stays local: this repo deploys to public GitHub
+# Pages, and the site's "never explain" principle forbids serving these.
+PRODUCT.md
+DESIGN.md
+CLAUDE.md
+.impeccable/
+.DS_Store
