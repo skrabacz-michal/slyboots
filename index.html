@@ -26,7 +26,44 @@
       <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260808_112712_da9d53df-6d27-4b12-bdf6-aa9dc2622bdf.mp4" type="video/mp4">
     </video>
   </div>
+
+  <button class="enter" id="enter" type="button" aria-label="Enter">
+    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true">
+      <path d="M32 44 C 22 32, 22 16, 36 6 C 28 22, 32 34, 40 42"/>
+      <path d="M68 44 C 78 32, 78 16, 64 6 C 72 22, 68 34, 60 42"/>
+      <path d="M14 68 C 26 54, 38 82, 50 68 C 62 54, 74 82, 86 68"/>
+      <circle cx="86" cy="66" r="4" fill="currentColor" stroke="none"/>
+    </svg>
+  </button>
 </div>
+
+<div class="flash" aria-hidden="true"></div>
+
+<section class="join" id="join" aria-hidden="true">
+  <button class="join-back" id="join-back" type="button" aria-label="Go back through the door">&larr;</button>
+  <div class="join-inner">
+    <form id="join-form" novalidate>
+      <h1>Welcome, apostate.</h1>
+      <p class="join-sub">The Church of Slyboots keeps a Ledger. Your name goes in it.</p>
+      <div class="field">
+        <label for="j-name">Your name</label>
+        <input type="text" id="j-name" name="name" required autocomplete="name">
+        <p class="field-error" role="alert" hidden>The Ledger requires a name.</p>
+      </div>
+      <div class="field">
+        <label for="j-email">Your email</label>
+        <input type="email" id="j-email" name="email" required autocomplete="email">
+        <p class="field-error" role="alert" hidden>A working address, apostate.</p>
+      </div>
+      <button class="join-submit" type="submit">Join the Church</button>
+      <p class="form-error" role="alert" hidden>The Ledger did not open. Try again.</p>
+    </form>
+    <div class="join-done" id="join-done" hidden>
+      <h1>It is done.</h1>
+      <p class="join-sub">The Ledger holds your name. The Church will write when there is something worth writing.</p>
+    </div>
+  </div>
+</section>
 
 <script src="js/main.js" defer></script>
 </body>
