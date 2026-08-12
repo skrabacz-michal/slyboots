@@ -1,6 +1,7 @@
-// Loop dip + the door. Paste your Web3Forms access key below (free at
-// https://web3forms.com); until then the join form runs in demo mode.
-const ACCESS_KEY = 'YOUR_ACCESS_KEY';
+// Loop dip + the door.
+const ACCESS_KEY = 'fee4e9be-a186-4eaa-ac2e-cf23c88e2335';
+// demo mode exists only for local development; production always submits
+const DEMO = ['localhost', '127.0.0.1'].includes(location.hostname);
 
 const DIP_TRIGGER = 0.85; // s before the end; CSS fade is 0.6s
 
@@ -76,9 +77,8 @@ form.addEventListener('submit', async (e) => {
   submit.disabled = true;
   submit.textContent = 'The Ledger opens…';
   try {
-    if (ACCESS_KEY === 'YOUR_ACCESS_KEY') {
-      // ponytail: no key configured yet; demo the ordination locally
-      console.warn('Web3Forms key not set. The vow was not sent anywhere.');
+    if (DEMO) {
+      console.warn('Local demo: the vow was not sent anywhere.');
       await new Promise((r) => setTimeout(r, 900));
     } else {
       const res = await fetch('https://api.web3forms.com/submit', {

@@ -5,14 +5,11 @@ edge and bottom fades, plus a subtle door in the bottom-right corner. The
 door zooms you through the portal into a white room with a join form.
 Static HTML/CSS/JS, no build step, deployed via GitHub Pages.
 
-## Wire the join form (Web3Forms)
+## The join form (Web3Forms)
 
-1. Go to <https://web3forms.com>, enter the inbox that should receive new
-   apostates, and copy the access key it emails you.
-2. In `js/main.js`, replace `YOUR_ACCESS_KEY` with that key.
-
-Until then the form runs in demo mode: the confirmation shows, but nothing
-is sent (a console warning says so).
+Wired: submissions email the inbox behind the access key in `js/main.js`.
+On localhost the form runs in demo mode (nothing is sent; a console warning
+says so); production always submits.
 
 Earlier versions (The Church of Slyboots, the full "Next Layer of
 Intelligence" hero with text and nav) live in git history.
