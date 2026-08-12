@@ -30,30 +30,44 @@ v.addEventListener('timeupdate', () => {
 
 // ── the door ──
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const stage = document.querySelector('.stage');
 const enter = document.getElementById('enter');
+const doorHit = document.getElementById('door-hit');
 const join = document.getElementById('join');
 const back = document.getElementById('join-back');
+let enterTimer = null;
 
-enter.addEventListener('click', () => {
+function enterDoor() {
+  if (document.body.classList.contains('entering')) return;
   document.body.classList.add('entering'); // zoom into the portal, flash to white
-  setTimeout(() => {
+  enterTimer = setTimeout(() => {
     document.body.classList.add('inside'); // reveal the form, let the flash lift
     join.setAttribute('aria-hidden', 'false');
+    stage.inert = true; // the black world leaves tab order and the a11y tree
     v.pause();
     document.getElementById('j-name').focus();
   }, reduced ? 50 : 1900);
-});
+}
+enter.addEventListener('click', enterDoor);
+doorHit.addEventListener('click', enterDoor); // the door itself opens
 
 function leave() {
   document.body.classList.remove('inside', 'entering'); // zoom back out
   join.setAttribute('aria-hidden', 'true');
+  stage.inert = false;
   const pp = v.play();
   if (pp && pp.catch) pp.catch(() => {});
   enter.focus();
 }
 back.addEventListener('click', leave);
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && document.body.classList.contains('inside')) leave();
+  if (e.key !== 'Escape') return;
+  if (document.body.classList.contains('inside')) {
+    leave();
+  } else if (document.body.classList.contains('entering')) {
+    clearTimeout(enterTimer); // cancel mid-transit; the zoom eases back out
+    document.body.classList.remove('entering');
+  }
 });
 
 // ── the ledger ──
