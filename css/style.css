@@ -49,6 +49,27 @@ body.inside .flash{opacity:0;transition:opacity 1.2s linear;}
 .join{position:fixed;inset:0;z-index:7;background:#fafafa;color:#0b0b0b;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;display:flex;visibility:hidden;opacity:0;transition:opacity .8s linear,visibility 0s .8s;}
 body.inside .join{visibility:visible;opacity:1;transition:opacity .8s linear,visibility 0s;}
 .join-inner{margin:auto;width:min(420px,86vw);padding:24px 0;}
+
+/* ═══ the procession ═══ */
+/* inside the light, before the Ledger: dark gods sweep past in the haze,
+   accelerating until body.arrived yields the room to the form */
+.procession{position:absolute;inset:0;overflow:hidden;pointer-events:none;color:#0b0b0b;opacity:0;}
+body.inside .procession{opacity:1;}
+.procession::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 108%, rgba(5,5,5,.20), rgba(5,5,5,0) 62%);}
+.procession-strip{position:absolute;left:0;bottom:0;display:flex;align-items:flex-end;gap:11vw;}
+.procession-strip svg{flex:none;height:78vh;fill:currentColor;}
+.procession-strip .near{opacity:.94;}
+.procession-strip .far{opacity:.22;filter:blur(5px);transform:scale(1.28);transform-origin:bottom center;}
+body.inside .procession-strip{animation:procession 7.2s cubic-bezier(.65,0,.9,.4) both;}
+@keyframes procession{
+  from{transform:translateX(calc(50vw - 20vh));}
+  to{transform:translateX(calc(-780vh - 260vw));}
+}
+body.arrived .procession{opacity:0;transition:opacity .6s;} /* after body.inside so it wins */
+
+/* the form waits behind the procession */
+.join-inner,.join-back{opacity:0;visibility:hidden;transition:opacity .8s,visibility 0s .8s;}
+body.arrived .join-inner,body.arrived .join-back{opacity:1;visibility:visible;transition:border-color .3s,opacity .8s .15s,visibility 0s;}
 .join h1{margin:0 0 10px;font-size:clamp(26px,4vw,34px);font-weight:600;letter-spacing:-.01em;}
 .join-sub{margin:0 0 34px;color:#6a6a6a;font-size:15px;line-height:1.55;}
 .join .field{margin-bottom:22px;display:grid;gap:7px;}
@@ -61,7 +82,7 @@ body.inside .join{visibility:visible;opacity:1;transition:opacity .8s linear,vis
 .join-submit:active{transform:translateY(1px);}
 .join-submit[disabled]{opacity:.6;cursor:wait;}
 .join-submit:focus-visible,.join-back:focus-visible{outline:2px solid #0b0b0b;outline-offset:3px;}
-.join-back{position:absolute;left:max(22px,env(safe-area-inset-left));top:max(22px,env(safe-area-inset-top));width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid #d6d6d6;background:transparent;color:#0b0b0b;cursor:pointer;transition:border-color .3s;}
+.join-back{position:absolute;left:max(22px,env(safe-area-inset-left));top:max(22px,env(safe-area-inset-top));width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid #d6d6d6;background:transparent;color:#0b0b0b;cursor:pointer;transition:border-color .3s,opacity .8s,visibility 0s .8s;}
 .join-back svg{display:block;}
 .join-back:hover{border-color:#0b0b0b;}
 .join-done h1{margin-bottom:10px;}
@@ -82,7 +103,8 @@ body.inside .join{visibility:visible;opacity:1;transition:opacity .8s linear,vis
 
 @media (prefers-reduced-motion:reduce){
   body.entering .plate{transform:none;transition:none;}
-  .flash,.join{transition-duration:.001s !important;}
+  .procession{display:none;}
+  .flash,.join,.join-inner,.join-back{transition-duration:.001s !important;}
 }
 
 @media (max-aspect-ratio:11/10){

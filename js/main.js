@@ -36,16 +36,20 @@ const doorHit = document.getElementById('door-hit');
 const join = document.getElementById('join');
 const back = document.getElementById('join-back');
 let enterTimer = null;
+let arriveTimer = null;
 
 function enterDoor() {
   if (document.body.classList.contains('entering')) return;
   document.body.classList.add('entering'); // zoom into the portal, flash to white
   enterTimer = setTimeout(() => {
-    document.body.classList.add('inside'); // reveal the form, let the flash lift
+    document.body.classList.add('inside'); // the light lifts on the procession
     join.setAttribute('aria-hidden', 'false');
     stage.inert = true; // the black world leaves tab order and the a11y tree
     v.pause();
-    document.getElementById('j-name').focus();
+    arriveTimer = setTimeout(() => {
+      document.body.classList.add('arrived'); // the gods pass; the Ledger shows itself
+      document.getElementById('j-name').focus();
+    }, reduced ? 0 : 6400); // the 7.2s procession is at full speed by then
   }, reduced ? 50 : 1900);
 }
 enter.addEventListener('click', enterDoor);
@@ -55,7 +59,8 @@ let returnTimer = null;
 
 function leave() {
   clearTimeout(returnTimer); // manual exit cancels the auto-return
-  document.body.classList.remove('inside', 'entering'); // zoom back out
+  clearTimeout(arriveTimer);
+  document.body.classList.remove('inside', 'entering', 'arrived'); // zoom back out
   join.setAttribute('aria-hidden', 'true');
   stage.inert = false;
   const pp = v.play();
